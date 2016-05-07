@@ -18,7 +18,12 @@ var options = {
 var turma = Mongoose.Schema({
     nome: {type: types.String, required: true},
     inicio: {type: types.Date, required: true},
-    final: {type: types.Date, required: true}
+    final: {type: types.Date, required: true},
+    objetivo:{type: types.String, required: true},
+    relatorioMensal:{type: types.String, required: true},
+    projetoPegagogicoAnual:{type: types.String, required: true},
+    ocorrenciaDiaria: {type: types.String}
+
 });
 
 module.exports = Mongoose.model('turma', turma);

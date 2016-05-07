@@ -21,8 +21,11 @@ var aluno = Mongoose.Schema({
     cpf: {type: types.Number, required: true},
     sexo: {type: types.Boolean, required: true},
     mensalidade: {type: types.Number, required: true},
-    doencas: {type: types.String, required: true},
-    avaliacaodescritiva: {type: types.String, required: true}
+    materiasMatriculadas: {type: types.String},
+    doencas: {type: types.String},
+    avaliacaoDescritivaMensal: {type: types.String},
+    advertenciaFamilia: {type: types.String},
+
 });
 
 module.exports = Mongoose.model('aluno', aluno);

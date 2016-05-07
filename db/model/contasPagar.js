@@ -16,7 +16,11 @@ var options = {
 };
 
 var contasPagar = Mongoose.Schema({
-    nome: {type: types.String, required: true}
+    nome: {type: types.String, required: true},
+    valor: {type: types.Number, required: true},
+    vencimento: {type: types.Date, required: true},
+    observacao: {type: types.String},
+    status:{type: types.Boolean, required: true},
 });
 
 module.exports = Mongoose.model('contasPagar', contasPagar);

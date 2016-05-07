@@ -27,7 +27,11 @@ var professor = Mongoose.Schema({
     telefone: {type: types.Number, required: true},
     admissao: {type: types.Date, required: true},
     salario: {type: types.Number, required: true},
-    bancodehoras: {type: types.Number, required: true}
+    bancodehoras: {type: types.Number, required: true},
+    advertencia: {type: types.String},
+    faltasMensal: {type: types.Number},
+    dificuldadesInformadas: {type: types.String},
+    comparecimentoReuniao: {type: types.Boolean},
 });
 
 module.exports = Mongoose.model('professor', professor);

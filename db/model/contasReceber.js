@@ -16,7 +16,11 @@ var options = {
 };
 
 var contasReceber = Mongoose.Schema({
-    nome: {type: types.String, required: true}
+    nome: {type: types.String, required: true},
+    valor: {type: types.Number, required: true},
+    vencimento: {type: types.Date, required: true},
+    observacao: {type: types.String},
+    status:{type: types.Boolean, required: true},
 });
 
 module.exports = Mongoose.model('contasReceber', contasReceber);
