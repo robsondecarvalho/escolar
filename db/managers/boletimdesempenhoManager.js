@@ -1,14 +1,14 @@
 /**
- * Created by Robson de Carvalho on 03/05/2016.
+ * Created by Robson de Carvalho on 13/05/2016.
  */
 
 var Manager = require('./manager.js');
 var utility = require('util');
-var Model = require('../model/responsavel.js');
+var Model = require('../model/boletimdesempenho.js');
 var hub = require('../../hub/hub.js');
 var Mensagem = require('../../util/mensagem.js');
 
-function ResponsavelManager(){
+function boletimdesempenhoManager(){
     var me = this;
     Manager.call(me);
     me.model = Model;
@@ -17,13 +17,13 @@ function ResponsavelManager(){
     me.wiring();
 }
 
-utility.inherits(ResponsavelManager, Manager);
+utility.inherits(boletimdesempenhoManager, Manager);
 
 /**
  * Inicia o tratamento dos namespace dos eventos, method recebe o nome da função
  * que vai ser executada por meio da herança.
  */
-ResponsavelManager.prototype.executaCrud = function(msg){
+boletimdesempenhoManager.prototype.executaCrud = function(msg){
     var me = this;
     var method = msg.getEvento().substr(msg.getEvento().lastIndexOf('.')+1);
     try {
@@ -33,13 +33,13 @@ ResponsavelManager.prototype.executaCrud = function(msg){
     }
 };
 
-ResponsavelManager.prototype.wiring = function(){
+boletimdesempenhoManager.prototype.wiring = function(){
     var me = this;
-    me.listeners['banco.responsavel.*'] = me.executaCrud.bind(me);
+    me.listeners['banco.boletimdesempenho.*'] = me.executaCrud.bind(me);
 
     for(var name in me.listeners){
         hub.on(name, me.listeners[name]);
     }
 };
 
-module.exports = new ResponsavelManager();
+module.exports = new boletimdesempenhoManager();

@@ -1,5 +1,5 @@
 /**
- * Created by Robson de Carvalho on 04/05/2016.
+ * Created by Robson de Carvalho on 12/05/2016.
  */
 
 var Mongoose = require('../Banco.js').mongoose;
@@ -15,8 +15,9 @@ var options = {
     }
 };
 
-var financeiro = Mongoose.Schema({
-    nome: {type: types.String, required: true}
+var obj = Mongoose.Schema({
+    nome: {type: types.String},
+    sigla: {type: types.String}
 });
 
-module.exports = Mongoose.model('financeiro', financeiro);
+module.exports = Mongoose.model('idioma', obj);

@@ -2,17 +2,22 @@
  * Created by Osvaldo on 06/10/15.
  */
 var Mongoosemodels = {
-    usuario: require('./UsuarioManager.js'),
-    turma: require('./TurmaManager.js'),
-    turmaProfessor: require('./TurmaProfessorManager.js'),
-    professor: require('./ProfessorManager.js'),
-    aluno: require('./AlunoManager.js'),
-    matricula: require('./MatriculaManager.js'),
-    responsavel: require('./ResponsavelManager.js'),
-    alunoResponsavel: require('./AlunoResponsavelManager.js'),
-    financeiro: require('./FinanceiroManager.js'),
-    contasPagar: require('./ContasPagarManager.js'),
-    contasReceber: require('./ContasReceberManager.js')
+    aluno: require('./alunoManager.js'),
+    boletimdesempenho: require('./boletimdesempenhoManager.js'),
+    cidade: require('./cidadeManager.js'),
+    contasapagar: require('./contasapagarManager.js'),
+    contasareceber: require('./contasareceberManager.js'),
+    estado: require('./estadoManager.js'),
+    idioma: require('./idiomaManager.js'),
+    logradouro: require('./logradouroManager.js'),
+    pais: require('./paisManager.js'),
+    professor: require('./professorManager.js'),
+    relatorio: require('./relatorioManager.js'),
+    responsavel: require('./responsavelalunoManager.js'),
+    turmaaluno: require('./turmaalunoManager.js'),
+    turma: require('./turmaManager.js'),
+    turmaprofessor: require('./turmaprofessorManager.js'),
+    usuario: require('./usuarioManager.js'),
 };
 
 module.exports = Mongoosemodels;

@@ -1,0 +1,135 @@
+
+entity Usuario {
+	nome String
+    datanascimento Date
+    cpf Number
+    senha String
+    email String
+    tipo ComumFinanceiro
+    
+    endereco ObjectId
+    idioma ObjectId
+} relationship ManyToOne{
+	Usuario{endreco} to Logradouro
+} relationship ManyToOne{
+	Usuario{idioma} to Idioma
+}
+
+entity ContasAReceber{
+	nome String
+    valor Number
+    vencimento Date
+    status Boolean
+}
+
+entity ContasAPagar{
+	nome String
+    valor Number
+    vencimento Date
+    status Boolean
+}
+
+entity Pais{
+	nome String
+}
+
+entity Estado{
+	nome String
+    
+    pais ObjectId
+} relationship ManyToOne{
+	Estado{pais} to Pais
+}
+
+entity Cidade{
+	nome String
+    
+    estado ObjectId
+} relationship ManyToOne{
+	Cidade{estado} to Estado
+}
+
+entity Logradouro{
+	rua String
+    numero Number
+    cep Number
+    
+    cidade ObjectId
+} relationship ManyToOne{
+	Logradouro{cidade} to Cidade
+}
+
+entity Idioma{
+	nome String
+    sigla String
+}
+
+entity Professor{
+	matricula Number
+    
+    pessoa ObjectId
+}
+relationship OneToOne{
+	Professor{pessoa} to Usuario
+}
+
+entity Aluno{
+	nome String
+    datanascimento Date
+    matricula Number
+}
+
+entity ResponsavelAluno{
+	aluno ObjectId
+    responsaveio ObjectId
+} relationship ManyToOne{
+	ResponsavelAluno{aluno} to Aluno
+} relationship ManyToOne{
+	ResponsavelAluno{responsavel} to Usuario
+}
+
+entity Turma{
+	nome String
+    inicio Date
+    final Date
+    objetivo String
+}
+
+entity TurmaProfessor{
+	professor ObjectId
+    turma ObjectId
+} relationship ManyToOne{
+	TurmaProfessor{professor} to Professor
+} relationship ManyToOne{
+	TurmaProfessor{turma} to Turma
+}
+
+entity TurmaAluno{
+	aluno ObjectId
+    turma ObjectId
+} relationship ManyToOne{
+	TurmaAluno{aluno} to Aluno
+} relationship ManyToOne{
+	TurmaAluno{turma} to Turma
+}
+
+entity Relatorio{
+	texto String
+    data Date
+    tipo DiarioMensal
+    autor ObjectId
+} relationship ManyToOne{
+	Relatorio{turma} to Turma
+} relationship ManyToOne{
+	Relatorio{autor} to Professor
+}
+
+entity BoletimDesempenho{
+	texto String
+    data Date
+    
+    aluno ObjectId
+} relationship ManyToOne{
+	BoletimDesempenho{aluno} to Aluno
+}
+

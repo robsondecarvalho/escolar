@@ -16,10 +16,11 @@ var options = {
 };
 
 var obj = Mongoose.Schema({
-    nome: {type: types.String},
-    inicio: {type: types.Date},
-    final: {type: types.Date},
-    objetivo: {type: types.String}
+    texto: {type: types.String},
+    data: {type: types.Date},
+    tipo: {type: types.String},
+    autor: {type: types.ObjectId, ref: 'usuario'}
+
 });
 
-module.exports = Mongoose.model('turma', obj);
+module.exports = Mongoose.model('relatorio', obj);

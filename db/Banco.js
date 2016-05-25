@@ -9,7 +9,7 @@ function Banco() {
     var db;
     me.listeners = {};
     console.log("iniciou o banco");
-    Mongoose.connect('mongodb://localhost/DMNute');
+    Mongoose.connect('mongodb://localhost/Escolar');
     this.mongoose = Mongoose;
     this.conectado = false;
     db = Mongoose.connection;

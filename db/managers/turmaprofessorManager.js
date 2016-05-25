@@ -1,14 +1,14 @@
 /**
- * Created by Robson de Carvalho on 04/05/2016.
+ * Created by Robson de Carvalho on 14/05/2016.
  */
 
 var Manager = require('./manager.js');
 var utility = require('util');
-var Model = require('../model/contasReceber.js');
+var Model = require('../model/turmaprofessor.js');
 var hub = require('../../hub/hub.js');
 var Mensagem = require('../../util/mensagem.js');
 
-function ContasReceberManager(){
+function turmaprofessorManager(){
     var me = this;
     Manager.call(me);
     me.model = Model;
@@ -17,13 +17,13 @@ function ContasReceberManager(){
     me.wiring();
 }
 
-utility.inherits(ContasReceberManager, Manager);
+utility.inherits(turmaprofessorManager, Manager);
 
 /**
  * Inicia o tratamento dos namespace dos eventos, method recebe o nome da função
  * que vai ser executada por meio da herança.
  */
-ContasReceberManager.prototype.executaCrud = function(msg){
+turmaprofessorManager.prototype.executaCrud = function(msg){
     var me = this;
     var method = msg.getEvento().substr(msg.getEvento().lastIndexOf('.')+1);
     try {
@@ -33,13 +33,13 @@ ContasReceberManager.prototype.executaCrud = function(msg){
     }
 };
 
-ContasReceberManager.prototype.wiring = function(){
+turmaprofessorManager.prototype.wiring = function(){
     var me = this;
-    me.listeners['banco.contasPagar.*'] = me.executaCrud.bind(me);
+    me.listeners['banco.turmaprofessor.*'] = me.executaCrud.bind(me);
 
     for(var name in me.listeners){
         hub.on(name, me.listeners[name]);
     }
 };
 
-module.exports = new ContasReceberManager();
+module.exports = new turmaprofessorManager();

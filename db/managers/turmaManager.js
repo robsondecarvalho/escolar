@@ -1,14 +1,14 @@
 /**
- * Created by Robson de Carvalho on 30/04/2016.
+ * Created by Robson de Carvalho on 13/05/2016.
  */
 
 var Manager = require('./manager.js');
 var utility = require('util');
-var Model = require('../model/aluno.js');
+var Model = require('../model/turma.js');
 var hub = require('../../hub/hub.js');
 var Mensagem = require('../../util/mensagem.js');
 
-function alunoManager(){
+function turmaManager(){
     var me = this;
     Manager.call(me);
     me.model = Model;
@@ -17,13 +17,13 @@ function alunoManager(){
     me.wiring();
 }
 
-utility.inherits(alunoManager, Manager);
+utility.inherits(turmaManager, Manager);
 
 /**
  * Inicia o tratamento dos namespace dos eventos, method recebe o nome da função
  * que vai ser executada por meio da herança.
  */
-alunoManager.prototype.executaCrud = function(msg){
+turmaManager.prototype.executaCrud = function(msg){
     var me = this;
     var method = msg.getEvento().substr(msg.getEvento().lastIndexOf('.')+1);
     try {
@@ -33,13 +33,13 @@ alunoManager.prototype.executaCrud = function(msg){
     }
 };
 
-alunoManager.prototype.wiring = function(){
+turmaManager.prototype.wiring = function(){
     var me = this;
-    me.listeners['banco.aluno.*'] = me.executaCrud.bind(me);
+    me.listeners['banco.turma.*'] = me.executaCrud.bind(me);
 
     for(var name in me.listeners){
         hub.on(name, me.listeners[name]);
     }
 };
 
-module.exports = new alunoManager();
+module.exports = new turmaManager();

@@ -1,15 +1,14 @@
 /**
- * Created by Robson de Carvalho on 28/04/2016.
+ * Created by Robson de Carvalho on 13/05/2016.
  */
-
 
 var Manager = require('./manager.js');
 var utility = require('util');
-var Model = require('../model/turmaProfessor.js');
+var Model = require('../model/responsavelaluno.js');
 var hub = require('../../hub/hub.js');
 var Mensagem = require('../../util/mensagem.js');
 
-function TurmaProfessorManager(){
+function responsavelalunoManager(){
     var me = this;
     Manager.call(me);
     me.model = Model;
@@ -18,13 +17,13 @@ function TurmaProfessorManager(){
     me.wiring();
 }
 
-utility.inherits(TurmaProfessorManager, Manager);
+utility.inherits(responsavelalunoManager, Manager);
 
 /**
  * Inicia o tratamento dos namespace dos eventos, method recebe o nome da função
  * que vai ser executada por meio da herança.
  */
-TurmaProfessorManager.prototype.executaCrud = function(msg){
+responsavelalunoManager.prototype.executaCrud = function(msg){
     var me = this;
     var method = msg.getEvento().substr(msg.getEvento().lastIndexOf('.')+1);
     try {
@@ -34,13 +33,13 @@ TurmaProfessorManager.prototype.executaCrud = function(msg){
     }
 };
 
-TurmaProfessorManager.prototype.wiring = function(){
+responsavelalunoManager.prototype.wiring = function(){
     var me = this;
-    me.listeners['banco.turmaprofessor.*'] = me.executaCrud.bind(me);
+    me.listeners['banco.responsavelaluno.*'] = me.executaCrud.bind(me);
 
     for(var name in me.listeners){
         hub.on(name, me.listeners[name]);
     }
 };
 
-module.exports = new TurmaProfessorManager();
+module.exports = new responsavelalunoManager();

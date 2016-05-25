@@ -16,9 +16,10 @@ var options = {
 };
 
 var obj = Mongoose.Schema({
-    nome: {type: types.String},
-    datanascimento: {type: types.Date},
-    matricula: {type: types.Number}
+    rua: {type: types.String},
+    numero: {type: types.Number},
+    cep: {type: types.Number},
+    cidade: {type: types.ObjectId, ref: 'cidade'}
 });
 
-module.exports = Mongoose.model('aluno', obj);
+module.exports = Mongoose.model('logradouro', obj);

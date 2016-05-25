@@ -1,14 +1,14 @@
 /**
- * Created by Robson de Carvalho on 03/05/2016.
+ * Created by Robson de Carvalho on 13/05/2016.
  */
 
 var Manager = require('./manager.js');
 var utility = require('util');
-var Model = require('../model/alunoResponsavel.js');
+var Model = require('../model/idioma.js');
 var hub = require('../../hub/hub.js');
 var Mensagem = require('../../util/mensagem.js');
 
-function AlunoResponsavelManager(){
+function idiomaManager(){
     var me = this;
     Manager.call(me);
     me.model = Model;
@@ -17,13 +17,13 @@ function AlunoResponsavelManager(){
     me.wiring();
 }
 
-utility.inherits(AlunoResponsavelManager, Manager);
+utility.inherits(idiomaManager, Manager);
 
 /**
  * Inicia o tratamento dos namespace dos eventos, method recebe o nome da função
  * que vai ser executada por meio da herança.
  */
-AlunoResponsavelManager.prototype.executaCrud = function(msg){
+idiomaManager.prototype.executaCrud = function(msg){
     var me = this;
     var method = msg.getEvento().substr(msg.getEvento().lastIndexOf('.')+1);
     try {
@@ -33,13 +33,16 @@ AlunoResponsavelManager.prototype.executaCrud = function(msg){
     }
 };
 
-AlunoResponsavelManager.prototype.wiring = function(){
+idiomaManager.prototype.wiring = function(){
     var me = this;
-    me.listeners['banco.alunoResponsavel.*'] = me.executaCrud.bind(me);
+    me.listeners['banco.idioma.*'] = me.executaCrud.bind(me);
 
     for(var name in me.listeners){
         hub.on(name, me.listeners[name]);
     }
 };
 
-module.exports = new AlunoResponsavelManager();
+module.exports = new idiomaManager();
+
+
+

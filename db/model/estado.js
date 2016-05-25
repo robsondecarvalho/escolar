@@ -17,8 +17,8 @@ var options = {
 
 var obj = Mongoose.Schema({
     nome: {type: types.String},
-    datanascimento: {type: types.Date},
-    matricula: {type: types.Number}
+    pais: {type: types.ObjectId, ref: 'pais'}
 });
 
-module.exports = Mongoose.model('aluno', obj);
+module.exports = Mongoose.model('estado', obj);
+

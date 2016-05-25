@@ -1,5 +1,5 @@
 /**
- * Created by Robson de Carvalho on 03/05/2016.
+ * Created by Robson de Carvalho on 12/05/2016.
  */
 
 var Mongoose = require('../Banco.js').mongoose;
@@ -15,9 +15,10 @@ var options = {
     }
 };
 
-var alunoResponsavel = Mongoose.Schema({
+var obj = Mongoose.Schema({
     aluno: {type: types.ObjectId, ref: 'aluno'},
     responsavel: {type: types.ObjectId, ref: 'responsavel'}
+
 });
 
-module.exports = Mongoose.model('alunoResponsavel', alunoResponsavel);
+module.exports = Mongoose.model('responsavelaluno', obj);
