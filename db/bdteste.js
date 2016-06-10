@@ -175,7 +175,7 @@ bdteste.prototype.criausuario = function () {
     var obj = [
         {
             nome:'Robson de Carvalho',
-            datanascimento: 1992-06-12,
+            datanascimento: (1992,06,12),
             cpf: 0912331239,
             senha: 123456,
             email: 'robsondecarvalho@outlook.com',
